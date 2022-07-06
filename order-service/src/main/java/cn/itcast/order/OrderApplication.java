@@ -1,5 +1,7 @@
 package cn.itcast.order;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,4 +35,13 @@ public class OrderApplication {
         return new RestTemplate();
     }
 
+    /**
+     * 通过定义IRule实现修改负载均衡规则方法一：代码方式
+     * 此方法是全局有效的，就是说不管调用什么服务提供者，这个负载均衡策略都会生效
+     * @return
+     */
+    /*@Bean
+    public IRule randomRule() {
+        return new RandomRule();
+    }*/
 }
