@@ -25,3 +25,13 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+
+user-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 配置文件方式：只对对应微服务生效
+
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: # 指定对user-service这个服务饥饿加载
+      - user-service
